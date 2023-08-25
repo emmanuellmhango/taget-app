@@ -46,15 +46,15 @@ const Login = ({ navigation }) => {
       );
       const { success, user } = response.data;
       if (success) {
-        setLoading(true);
+        setLoading(false);
         dispatch(addUser(user));
         navigation.navigate("Dashboard");
       } else {
-        setLoading(true);
-        alert("Oops!. Seems there is a problem. Please try again");
+        setLoading(false);
+        alert("Oops!. Seems the provided details are wrong. Please try again");
       }
     } catch (error) {
-      setLoading(true);
+      setLoading(false);
       alert("Seems there is network problem. Please try again");
     }
   };

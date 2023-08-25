@@ -351,7 +351,8 @@ export const styles = StyleSheet.create({
     width: "90%",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: 5,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   categoryName: {
     fontWeight: "700",
@@ -366,5 +367,15 @@ export const styles = StyleSheet.create({
   },
   categories: {
     height: "98%",
+  },
+  rightArrow: {
+    fontSize: 30,
+    padding: 5,
+    color: "#abc",
+  },
+  categoryIcon: {
+    resizeMode: "contain",
+    width: 50,
+    height: 50,
   },
 });
