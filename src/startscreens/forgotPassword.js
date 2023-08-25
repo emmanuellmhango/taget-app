@@ -21,7 +21,7 @@ const DismissKeyboard = ({ children }) => (
   </TouchableWithoutFeedback>
 );
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async (values) => {
@@ -42,9 +42,7 @@ const ForgotPassword = () => {
           );
           if (sendEmail.data.success) {
             setLoading(false);
-            alert(
-              "We have sent you an email with the instructions, please check."
-            );
+            navigation.navigate("ForgotFinal");
           } else {
             setLoading(false);
             alert("Oops!. There was an error. Please try again");
