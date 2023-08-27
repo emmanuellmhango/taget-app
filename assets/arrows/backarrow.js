@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 const CustomBackArrow = () => {
@@ -8,12 +8,13 @@ const CustomBackArrow = () => {
 
   return (
     <TouchableOpacity onPress={() => navigation.goBack()}>
-      <Ionicons
-        name="md-arrow-undo-outline"
+      <AntDesign
+        name="caretleft"
         size={24}
         style={{
           color: "#fff",
-          marginLeft: 8,
+          marginLeft: 0,
+          paddingLeft: 0,
         }}
       />
     </TouchableOpacity>

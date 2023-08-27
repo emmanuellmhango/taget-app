@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ddd",
     paddingLeft: 5,
-    borderRadius: 6,
+    borderRadius: 15,
     marginBottom: 10,
     backgroundColor: "#fff",
     width: "80%",
@@ -185,6 +185,7 @@ export const styles = StyleSheet.create({
     borderRadius: 16,
   },
   NoContentFlyItemContainer: {
+    height: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -240,7 +241,10 @@ export const styles = StyleSheet.create({
     padding: 6,
     borderColor: "#fff",
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 20,
+  },
+  instructionsViewContainer: {
+    width: "100%",
   },
   aboutInstructionsView: {
     padding: 6,
@@ -253,7 +257,8 @@ export const styles = StyleSheet.create({
   },
   instruction: {
     color: "#fff",
-    fontWeight: "bold",
+    fontWeight: "400",
+    textAlign: "center",
   },
   modalFly: {
     width: "100%",
@@ -312,7 +317,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
   },
   claimsContainer: {
-    width: "100%",
+    width: "99%",
     backgroundColor: "#fff",
     borderRadius: 26,
     marginBottom: 10,
@@ -320,12 +325,26 @@ export const styles = StyleSheet.create({
     height: "67%",
   },
   aboutContainer: {
-    width: "100%",
+    width: "99%",
     backgroundColor: "#fff",
     borderRadius: 26,
     marginBottom: 10,
     marginTop: 10,
     height: "82%",
+  },
+  aboutInfoContainer: {
+    width: "99%",
+    backgroundColor: "#fff",
+    borderRadius: 26,
+    marginBottom: 10,
+    marginTop: 10,
+    height: "90%",
+  },
+  exploreContainer: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#fff",
+    marginBottom: 0,
   },
   categoryHeader: {
     padding: 20,
@@ -377,5 +396,51 @@ export const styles = StyleSheet.create({
     resizeMode: "contain",
     width: 50,
     height: 50,
+  },
+  aboutInfoHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+  },
+  infoHeaderTitle: {
+    color: "#612cfe",
+    fontWeight: "600",
+    fontSize: 30,
+    paddingLeft: 10,
+  },
+  aboutInfoBodyLine: {
+    borderTopWidth: 2,
+    borderTopColor: "#612cfe",
+    borderTopEndRadius: 25,
+    borderTopLeftRadius: 25,
+    borderLeftWidth: 2,
+    borderLeftColor: "#612cfe",
+    borderLeftEndRadius: 25,
+    borderRightWidth: 2,
+    borderRightColor: "#612cfe",
+    borderRightEndRadius: 25,
+  },
+  aboutInfoBody: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  infoBodyText: {
+    color: "#612cfe",
+    fontSize: 15,
+  },
+  mapStyle: {
+    alignSelf: "stretch",
+    height: "100%",
+    width: "100%",
+  },
+  locationLoading: {
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  mapMarker: {
+    height: 150,
+    width: 150,
   },
 });

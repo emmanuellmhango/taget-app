@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { styles } from "../../assets/css/styles";
 import {
@@ -20,6 +21,7 @@ import Safety from "../../assets/icons/Safety.svg";
 import Security from "../../assets/icons/Security.svg";
 
 const AllCategories = (props) => {
+  const navigation = useNavigation();
   const { categories } = props;
   const [tagsByAllCategories, setTagsByAllCategories] = useState([]);
   const [tagCategoriesInProgress, setTagCategoriesInProgress] = useState([]);
@@ -67,6 +69,11 @@ const AllCategories = (props) => {
     return tags.length;
   };
 
+  const handlePress = (event, category) => {
+    event.preventDefault();
+    navigation.navigate("CategoryInfo", { category });
+  };
+
   return (
     <View style={styles.categories}>
       <View style={styles.categoryHeader}>
@@ -74,45 +81,50 @@ const AllCategories = (props) => {
       </View>
       <ScrollView>
         {categories.map((category) => (
-          <View key={category.id} style={styles.categoryItem}>
-            <View style={styles.categoryItemContent}>
-              <View style={styles.categoryIcon}>
-                {category.name === "accident" && <Accident />}
-                {category.name === "water" && <Water />}
-                {category.name === "road" && <Road />}
-                {category.name === "security" && <Security />}
-                {category.name === "safety" && <Safety />}
-                {category.name === "gas" && <Gas />}
-                {category.name === "electricity" && <Electricity />}
-                {category.name === "ecology" && <Ecology />}
-                {category.name === "building" && <Building />}
-                {category.name === "animals" && <Animals />}
-              </View>
-              <View style={styles.categoryNameContent}>
-                <Text style={styles.categoryName}>
-                  {category.name.charAt(0).toUpperCase() +
-                    category.name.slice(1).toLowerCase()}
-                </Text>
-                <Text style={styles.claimsInProgress}>Tags in progress</Text>
-                <Text style={styles.claimsInProgressCounter}>
-                  {tagsInProgress(category.id)}
-                </Text>
-              </View>
-              <View style={styles.categoryStats}>
-                <Text style={styles.claimsInProgress}>Number of Tags</Text>
-                <Text style={styles.claimsInProgressCounter}>
-                  {allTags(category.id)}
-                </Text>
-                <Text style={styles.claimsInProgress}>Tags Fixed</Text>
-                <Text style={styles.claimsInProgressCounter}>
-                  {tagsFixed(category.id)}
-                </Text>
-              </View>
-              <View style={styles.categoryArrow}>
-                <Entypo name="chevron-thin-right" style={styles.rightArrow} />
+          <TouchableOpacity
+            key={category.id}
+            onPress={(event) => handlePress(event, category)}
+          >
+            <View style={styles.categoryItem}>
+              <View style={styles.categoryItemContent}>
+                <View style={styles.categoryIcon}>
+                  {category.name === "accident" && <Accident />}
+                  {category.name === "water" && <Water />}
+                  {category.name === "road" && <Road />}
+                  {category.name === "security" && <Security />}
+                  {category.name === "safety" && <Safety />}
+                  {category.name === "gas" && <Gas />}
+                  {category.name === "electricity" && <Electricity />}
+                  {category.name === "ecology" && <Ecology />}
+                  {category.name === "building" && <Building />}
+                  {category.name === "animals" && <Animals />}
+                </View>
+                <View style={styles.categoryNameContent}>
+                  <Text style={styles.categoryName}>
+                    {category.name.charAt(0).toUpperCase() +
+                      category.name.slice(1).toLowerCase()}
+                  </Text>
+                  <Text style={styles.claimsInProgress}>Tags in progress</Text>
+                  <Text style={styles.claimsInProgressCounter}>
+                    {tagsInProgress(category.id)}
+                  </Text>
+                </View>
+                <View style={styles.categoryStats}>
+                  <Text style={styles.claimsInProgress}>Number of Tags</Text>
+                  <Text style={styles.claimsInProgressCounter}>
+                    {allTags(category.id)}
+                  </Text>
+                  <Text style={styles.claimsInProgress}>Tags Fixed</Text>
+                  <Text style={styles.claimsInProgressCounter}>
+                    {tagsFixed(category.id)}
+                  </Text>
+                </View>
+                <View style={styles.categoryArrow}>
+                  <Entypo name="chevron-thin-right" style={styles.rightArrow} />
+                </View>
               </View>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>

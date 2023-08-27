@@ -6,15 +6,15 @@ import AllClaims from "../state/allclaims";
 import { styles } from "../../assets/css/styles";
 
 const DashBoard = ({ navigation }) => {
-  const claimsAll = useSelector((state) => state.claims.claims);
+  const { claims } = useSelector((state) => state.claims);
   const [weeklyClaims, setWeeklyClaims] = useState("");
   const [topCategory, setTopCategory] = useState("");
 
   useEffect(() => {
-    if (claimsAll) {
-      findMostOccurringCategory(claimsAll);
+    if (claims) {
+      findMostOccurringCategory(claims);
     }
-  }, [claimsAll]);
+  }, [claims]);
 
   const handleAddButtonPress = () => {
     navigation.navigate("ClaimOne");
@@ -50,14 +50,14 @@ const DashBoard = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.claimsContainer}>
-        {claimsAll?.length < 1 || claimsAll === null ? (
+        {claims?.length < 1 || claims === null ? (
           <View style={styles.NoContentFlyItemContainer}>
             <Text style={styles.NoClaimsFlyText}>
               You havent made a Tag Yet
             </Text>
           </View>
         ) : (
-          <AllClaims claims={claimsAll} />
+          <AllClaims claims={claims} />
         )}
       </View>
       <View style={styles.modal}>
@@ -78,10 +78,12 @@ const DashBoard = ({ navigation }) => {
           <TextInput style={styles.inputModal} value={topCategory} />
         </View>
         <View style={styles.topCategory}>
-          <View style={styles.instructionsView}>
-            <Text style={styles.instruction}>
-              To press a Tag, press the camera button
-            </Text>
+          <View style={styles.instructionsViewContainer}>
+            <View style={styles.instructionsView}>
+              <Text style={styles.instruction}>
+                To press a Tag, press the camera button
+              </Text>
+            </View>
           </View>
         </View>
       </View>

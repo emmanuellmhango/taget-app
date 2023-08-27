@@ -10,6 +10,7 @@ import CustomBackArrow from "./assets/arrows/backarrow";
 import ForgotPassword from "./src/startscreens/forgotPassword";
 import ForgotFinal from "./src/startscreens/ForgotFinal";
 import TopTabs from "./src/toptabs/TopTabs";
+import CategoryInfo from "./src/toptabs/categoryInfo";
 
 const Stack = createNativeStackNavigator();
 
@@ -70,6 +71,19 @@ export default function App() {
               headerStyle: {
                 backgroundColor: "#612cfe",
               },
+              headerLeft: () => <CustomBackArrow />,
+            }}
+          />
+          <Stack.Screen
+            name="CategoryInfo"
+            component={CategoryInfo}
+            options={{
+              title: "About",
+              headerStyle: {
+                backgroundColor: "#612cfe",
+              },
+              headerTitleAlign: "center",
+              headerTintColor: "#fff",
               headerLeft: () => <CustomBackArrow />,
             }}
           />
