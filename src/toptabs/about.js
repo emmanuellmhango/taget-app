@@ -21,7 +21,7 @@ const About = () => {
   useEffect(() => {}, [categories]);
 
   const handleAddButtonPress = () => {
-    navigation.navigate("ClaimOne");
+    navigation.navigate("ClaimFirstComponent");
   };
 
   return (

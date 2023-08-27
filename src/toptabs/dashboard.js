@@ -17,7 +17,7 @@ const DashBoard = ({ navigation }) => {
   }, [claims]);
 
   const handleAddButtonPress = () => {
-    navigation.navigate("ClaimOne");
+    navigation.navigate("ClaimFirstComponent");
   };
 
   const findMostOccurringCategory = (data) => {
@@ -69,7 +69,7 @@ const DashBoard = ({ navigation }) => {
           />
           <TextInput style={styles.inputModal} value={weeklyClaims} />
         </View>
-        <View style={styles.topCategory}>
+        <View style={styles.analytics}>
           <Ionicons
             name="ios-grid-outline"
             size={28}

@@ -11,6 +11,9 @@ import ForgotPassword from "./src/startscreens/forgotPassword";
 import ForgotFinal from "./src/startscreens/ForgotFinal";
 import TopTabs from "./src/toptabs/TopTabs";
 import CategoryInfo from "./src/toptabs/categoryInfo";
+import ClaimFirstComponent from "./src/claims/ClaimFirstComponent";
+import ClaimSecondComponent from "./src/claims/ClaimSecondComponent";
+import ClaimDetails from "./src/claims/ClaimDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -79,6 +82,45 @@ export default function App() {
             component={CategoryInfo}
             options={{
               title: "About",
+              headerStyle: {
+                backgroundColor: "#612cfe",
+              },
+              headerTitleAlign: "center",
+              headerTintColor: "#fff",
+              headerLeft: () => <CustomBackArrow />,
+            }}
+          />
+          <Stack.Screen
+            name="ClaimFirstComponent"
+            component={ClaimFirstComponent}
+            options={{
+              title: "First Picture",
+              headerStyle: {
+                backgroundColor: "#612cfe",
+              },
+              headerTitleAlign: "center",
+              headerTintColor: "#fff",
+              headerLeft: () => <CustomBackArrow />,
+            }}
+          />
+          <Stack.Screen
+            name="ClaimSecondComponent"
+            component={ClaimSecondComponent}
+            options={{
+              title: "Second Picture",
+              headerStyle: {
+                backgroundColor: "#612cfe",
+              },
+              headerTitleAlign: "center",
+              headerTintColor: "#fff",
+              headerLeft: () => <CustomBackArrow />,
+            }}
+          />
+          <Stack.Screen
+            name="ClaimDetails"
+            component={ClaimDetails}
+            options={{
+              title: "Submit Tag",
               headerStyle: {
                 backgroundColor: "#612cfe",
               },
