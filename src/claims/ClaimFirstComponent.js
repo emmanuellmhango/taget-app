@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import { styles } from "../../assets/css/styles";
 import { Camera } from "expo-camera";
+import { useSelector } from "react-redux";
+import { styles } from "../../assets/css/styles";
 
 const ClaimFirstComponent = ({ navigation }) => {
   const [firstImage, setFirstImage] = useState(null);
   const [camera, setCamera] = useState(null);
+  const [hasPermission, setHasPermission] = useState(null);
+  const { location } = useSelector((state) => state.location);
 
   useEffect(() => {
     (async () => {
@@ -22,8 +25,7 @@ const ClaimFirstComponent = ({ navigation }) => {
     }
   };
 
-  const goNext = (event) => {
-    event.preventDefault();
+  const goNext = () => {
     navigation.navigate("ClaimSecondComponent", { firstImage });
   };
 
@@ -60,7 +62,7 @@ const ClaimFirstComponent = ({ navigation }) => {
             </View>
           </TouchableOpacity>
           {firstImage ? (
-            <TouchableOpacity onPress={(event) => goNext(event)}>
+            <TouchableOpacity onPress={goNext}>
               <View style={styles.nextAction}>
                 <Text style={styles.controlText}>NEXT</Text>
               </View>

@@ -8,6 +8,7 @@ import MapView, { Marker } from "react-native-maps";
 function Explore() {
   const [location, setLocation] = useState(null);
   const { claims } = useSelector((state) => state.claims);
+
   const getLocationAsync = async () => {
     const { status } = await Location.requestForegroundPermissionsAsync();
     if (status === "granted") {
@@ -38,7 +39,7 @@ function Explore() {
                 longitudeDelta: 0.0421,
               }}
             >
-              {claims?.length < 1 || claims === null ? (
+              {claims?.length < 1 || claims === null || claims === undefined ? (
                 <Marker
                   coordinate={{
                     latitude: location.coords.latitude,

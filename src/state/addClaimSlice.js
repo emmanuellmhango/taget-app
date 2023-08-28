@@ -7,11 +7,11 @@ const addClaimSlice = createSlice({
   name: "claims",
   initialState,
   reducers: {
-    addClaim: (state, action) => {
+    addClaims: (state, action) => {
       state.claims = action.payload;
     },
   },
 });
 
-export const { addClaim } = addClaimSlice.actions;
+export const { addClaims } = addClaimSlice.actions;
 export default addClaimSlice;

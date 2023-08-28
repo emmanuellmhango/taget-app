@@ -16,7 +16,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
 import { addUser } from "../state/userSlice";
 import { styles } from "../../assets/css/styles";
-import URL from "../state/url";
+import URL, { GENERAL_URL } from "../state/url";
 
 const DismissKeyboard = ({ children }) => (
   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

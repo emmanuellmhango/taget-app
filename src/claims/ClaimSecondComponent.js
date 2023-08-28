@@ -5,9 +5,10 @@ import { styles } from "../../assets/css/styles";
 import { Camera } from "expo-camera";
 
 const ClaimSecondComponent = ({ navigation, route }) => {
-  const { firstImage } = route.params;
+  const { firstImage, location } = route.params;
   const [secondImage, setSecondImage] = useState(null);
   const [camera, setCamera] = useState(null);
+  const [hasPermission, setHasPermission] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -23,10 +24,11 @@ const ClaimSecondComponent = ({ navigation, route }) => {
     }
   };
 
-  const goNext = (event) => {
-    event.preventDefault();
-    const images = [firstImage, secondImage];
-    navigation.navigate("ClaimDetails", { images });
+  const goNext = () => {
+    navigation.navigate("ClaimDetails", {
+      img1: firstImage,
+      img2: secondImage,
+    });
   };
 
   return (
@@ -68,7 +70,7 @@ const ClaimSecondComponent = ({ navigation, route }) => {
             </View>
           </TouchableOpacity>
           {secondImage ? (
-            <TouchableOpacity onPress={(event) => goNext(event)}>
+            <TouchableOpacity onPress={goNext}>
               <View style={styles.nextAction}>
                 <Text style={styles.controlText}>NEXT</Text>
               </View>

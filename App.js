@@ -7,6 +7,7 @@ import Home from "./home";
 import Login from "./src/startscreens/login";
 import Signup from "./src/startscreens/signup";
 import CustomBackArrow from "./assets/arrows/backarrow";
+import CustomHomeIcon from "./assets/arrows/homeicon";
 import ForgotPassword from "./src/startscreens/forgotPassword";
 import ForgotFinal from "./src/startscreens/ForgotFinal";
 import TopTabs from "./src/toptabs/TopTabs";
@@ -14,6 +15,8 @@ import CategoryInfo from "./src/toptabs/categoryInfo";
 import ClaimFirstComponent from "./src/claims/ClaimFirstComponent";
 import ClaimSecondComponent from "./src/claims/ClaimSecondComponent";
 import ClaimDetails from "./src/claims/ClaimDetails";
+import ClaimSubmitted from "./src/claims/ClaimSubmitted";
+import ViewClaim from "./src/claims/ViewClaim";
 
 const Stack = createNativeStackNavigator();
 
@@ -127,6 +130,34 @@ export default function App() {
               headerTitleAlign: "center",
               headerTintColor: "#fff",
               headerLeft: () => <CustomBackArrow />,
+            }}
+          />
+          <Stack.Screen
+            name="ClaimSubmitted"
+            component={ClaimSubmitted}
+            options={{
+              title: "Submitted Tag",
+              headerStyle: {
+                backgroundColor: "#612cfe",
+              },
+              headerTitleAlign: "center",
+              headerTintColor: "#fff",
+              headerLeft: () => <CustomBackArrow />,
+              headerRight: () => <CustomHomeIcon />,
+            }}
+          />
+          <Stack.Screen
+            name="ViewClaim"
+            component={ViewClaim}
+            options={{
+              title: "Explore Tag",
+              headerStyle: {
+                backgroundColor: "#612cfe",
+              },
+              headerTitleAlign: "center",
+              headerTintColor: "#fff",
+              headerLeft: () => <CustomBackArrow />,
+              headerRight: () => <CustomHomeIcon />,
             }}
           />
           <Stack.Screen

@@ -6,7 +6,7 @@ import { fetchCategories, addCategory } from "../state/categorySlice";
 import { styles } from "../../assets/css/styles";
 import AllCategories from "./allCategories";
 
-const About = () => {
+const About = ({ navigation }) => {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
   useEffect(() => {
