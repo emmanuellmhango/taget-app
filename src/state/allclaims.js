@@ -31,7 +31,7 @@ const AllClaims = ({ claims }) => {
               <TouchableOpacity onPress={() => viewOnMap(claim)} key={index}>
                 <View style={styles.flyItemContainer}>
                   <View style={styles.flyItem}>
-                    <View style={styles.flyImageContainerDisCla}>
+                    <View style={styles.flyImageContainer}>
                       {claim.category.name === "accident" && <Accident />}
                       {claim.category.name === "water" && <Water />}
                       {claim.category.name === "road" && <Road />}

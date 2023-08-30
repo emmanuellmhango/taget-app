@@ -49,9 +49,11 @@ const ClaimDetails = ({ navigation, route }) => {
     const formData = new FormData();
     const images = [img1, img2];
     const imgName = Math.random().toString(36).substring(2, 20);
-
+    const latitude = location.coords.latitude;
+    const longitude = location.coords.longitude;
+    const newLocation = JSON.stringify({ latitude, longitude });
     formData.append("claim[comment]", comment);
-    formData.append("claim[location]", JSON.stringify(location));
+    formData.append("claim[location]", newLocation);
     formData.append("claim[forwarded]", "false");
     formData.append("claim[user_id]", user.id);
     formData.append("claim[category_id]", selectedCategory[1]);

@@ -2,19 +2,34 @@ import axios from "axios";
 import { GENERAL_URL } from "./url";
 
 export const fetchTagsByCategory = async () => {
-  const response = await axios.get(`${GENERAL_URL}/claims-by-categories`);
-  const { claims } = response.data;
-  return claims;
+  try {
+    const response = await axios.get(`${GENERAL_URL}/claims-by-categories`);
+    const { success } = response.data;
+    if (success) {
+      const { claims } = response.data;
+      return claims;
+    }
+  } catch (error) {}
 };
 
 export const fetchTagsInProgress = async () => {
-  const response = await axios.get(`${GENERAL_URL}//claims-in-progress`);
-  const { claims } = response.data;
-  return claims;
+  try {
+    const response = await axios.get(`${GENERAL_URL}/claims-in-progress`);
+    const { success } = response.data;
+    if (success) {
+      const { claims } = response.data;
+      return claims;
+    }
+  } catch (error) {}
 };
 
 export const fetchTagsFixed = async () => {
-  const response = await axios.get(`${GENERAL_URL}/claims-fixed`);
-  const { claims } = response.data;
-  return claims;
+  try {
+    const response = await axios.get(`${GENERAL_URL}/claims-fixed`);
+    const { success } = response.data;
+    if (success) {
+      const { claims } = response.data;
+      return claims;
+    }
+  } catch (error) {}
 };

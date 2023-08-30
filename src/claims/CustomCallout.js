@@ -36,7 +36,6 @@ const CustomCallout = ({
             alt="Claim Image"
           />
         </View>
-
         <View style={styles.detailsCalloutContainer}>
           <View style={styles.detailsCalloutCategory}>
             <Text style={styles.detailsCalloutText}>Category</Text>
@@ -72,9 +71,11 @@ const styless = StyleSheet.create({
     borderRadius: 8,
     borderColor: "#612cfe",
     borderWidth: 2,
-    padding: 8,
-    width: 250,
+    width: 230,
     height: 290,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   calloutButton: {
     width: 150,
@@ -88,7 +89,8 @@ const styless = StyleSheet.create({
   calloutView: {
     flexDirection: "column",
     alignItems: "center",
-    width: 250,
+    justifyContent: "center",
+    width: 230,
   },
   calloutText1: {
     color: "#fff",

@@ -180,9 +180,9 @@ export const styles = StyleSheet.create({
   cameraDiv: {
     backgroundColor: "#fff",
     padding: 3,
-    width: 60,
+    width: 80,
     marginTop: 10,
-    borderRadius: 16,
+    borderRadius: 25,
     borderWidth: 1,
     borderColor: "#fff",
     borderBlockColor: "#fff",
@@ -247,7 +247,7 @@ export const styles = StyleSheet.create({
     borderRadius: 15,
   },
   instructionsViewContainer: {
-    width: "90%",
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -300,12 +300,14 @@ export const styles = StyleSheet.create({
     width: "20%",
     marginRight: 3,
     aspectRatio: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
   flyImageContainerDisCla: {
     width: "20%",
     aspectRatio: 1,
     alignItems: "center",
-    justifyContent: "center";
+    justifyContent: "center",
   },
   flyImage: {
     flex: 1,
@@ -326,7 +328,7 @@ export const styles = StyleSheet.create({
   },
   flyTextClaims: {
     color: "#612cfe",
-    fontSize: 12,
+    fontSize: 10,
   },
   claimsContainer: {
     width: "99%",
@@ -544,7 +546,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     height: 100,
     marginTop: 20,
-    width: 240,
+    width: 220,
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
@@ -634,6 +636,7 @@ export const styles = StyleSheet.create({
     color: "#fff",
   },
   detailsCalloutContainer: {
+    width: 220,
     height: 80,
     flexDirection: "row",
     alignItems: "center",
@@ -647,9 +650,9 @@ export const styles = StyleSheet.create({
     borderColor: "#ddd",
     paddingLeft: 10,
     borderRadius: 9,
-    width: 180,
-    height: 32,
-    fontWeight: "bold",
+    width: 220,
+    height: 30,
+    fontSize: 10,
     color: "#fff",
   },
   inputModalCalloutA: {

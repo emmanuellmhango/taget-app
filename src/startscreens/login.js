@@ -35,6 +35,22 @@ const Login = ({ navigation }) => {
       password: values.password,
     };
     try {
+      //   const res = [];
+      //   for (let i = 23; i < 28; i++) {
+      //     const response = await axios.delete(`${GENERAL_URL}/claims/${i}`);
+      //     res.push(response.data.success);
+      //   }
+      //   const success = res.every((item) => item === true);
+      //   setLoading(false);
+      //   if (success) {
+      //     alert("YES");
+      //   } else {
+      //     alert("NO");
+      //   }
+      // } catch (error) {
+      //   setLoading(false);
+      //   console.log(error);
+      // }
       const response = await axios.get(
         URL,
         { params: data },
@@ -87,7 +103,7 @@ const Login = ({ navigation }) => {
                   style={styles.logo}
                 />
                 <View style={styles.socialLogin}>
-                  <Text style={styles.socialText}>Sign up with Social</Text>
+                  <Text style={styles.socialText}>Sign in with Social</Text>
                   <TouchableOpacity style={styles.socialBtn}>
                     <FontAwesome5 name="facebook" style={styles.facebookIcon} />
                   </TouchableOpacity>

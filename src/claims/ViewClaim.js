@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Text, View, Image, TextInput } from "react-native";
 import { styles } from "../../assets/css/styles";
 import MapView, { Marker, Callout } from "react-native-maps";
@@ -16,7 +16,8 @@ import Safety from "../../assets/icons/Safety.svg";
 import Security from "../../assets/icons/Security.svg";
 
 const ViewClaim = ({ route }) => {
-  const { claim } = route.params;
+  const { categoryName, images, location, geocode } = route.params;
+  const newLocation = JSON.parse(location);
 
   return (
     <View style={styles.aboutWrapper}>
@@ -25,24 +26,24 @@ const ViewClaim = ({ route }) => {
           <MapView
             style={styles.mapStyle}
             region={{
-              latitude: claim.location.coords.latitude,
-              longitude: claim.location.coords.longitude,
+              latitude: newLocation.latitude,
+              longitude: newLocation.longitude,
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}
           >
             <Marker
               coordinate={{
-                latitude: claim.location.coords.latitude,
-                longitude: claim.location.coords.longitude,
+                latitude: newLocation.latitude,
+                longitude: newLocation.longitude,
               }}
-              title={category}
+              title={categoryName}
             >
               <ViewTag
-                imgOne={claim.images[0]}
-                imgTwo={claim.images[0]}
-                geoCode={claim.geoCode}
-                category={claim.category.name}
+                imgOne={images[0]}
+                imgTwo={images[0]}
+                geoCode={geocode}
+                category={categoryName}
               />
             </Marker>
           </MapView>

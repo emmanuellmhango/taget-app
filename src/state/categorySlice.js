@@ -21,11 +21,14 @@ const categorySlice = createSlice({
 });
 
 export const fetchCategories = async () => {
-  const response = await axios.get(`${GENERAL_URL}/categories`);
-  const { success, categories } = response.data;
-  if (success) {
-    return categories;
-  }
+  try {
+    const response = await axios.get(`${GENERAL_URL}/categories`);
+    const { success } = response.data;
+    if (success) {
+      const { categories } = response.data;
+      return categories;
+    }
+  } catch (error) {}
 };
 
 export const { addCategory, deleteCategory } = categorySlice.actions;

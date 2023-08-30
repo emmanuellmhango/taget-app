@@ -23,14 +23,16 @@ import Security from "../../assets/icons/Security.svg";
 const AllCategories = (props) => {
   const navigation = useNavigation();
   const { categories } = props;
-  const [tagsByAllCategories, setTagsByAllCategories] = useState([]);
-  const [tagCategoriesInProgress, setTagCategoriesInProgress] = useState([]);
-  const [tagCategoriesFixed, setTagCategoriesFixed] = useState([]);
+  const [tagsByAllCategories, setTagsByAllCategories] = useState({});
+  const [tagCategoriesInProgress, setTagCategoriesInProgress] = useState({});
+  const [tagCategoriesFixed, setTagCategoriesFixed] = useState({});
 
   useEffect(() => {
     const fetchClaimsByCategories = async () => {
       const response = await fetchTagsByCategory();
-      setTagsByAllCategories(response);
+      if (response) {
+        setTagsByAllCategories(response);
+      }
     };
 
     fetchClaimsByCategories();
@@ -39,7 +41,9 @@ const AllCategories = (props) => {
   useEffect(() => {
     const fetchClaimsInProgress = async () => {
       const response = await fetchTagsInProgress();
-      setTagCategoriesInProgress(response);
+      if (response) {
+        setTagCategoriesInProgress(response);
+      }
     };
 
     fetchClaimsInProgress();
@@ -48,25 +52,36 @@ const AllCategories = (props) => {
   useEffect(() => {
     const fetchClaimsFixed = async () => {
       const response = await fetchTagsFixed();
-      setTagCategoriesFixed(response);
+      if (response) {
+        setTagCategoriesFixed(response);
+      }
     };
 
     fetchClaimsFixed();
   }, []);
 
   const tagsInProgress = (id) => {
-    const tags = tagCategoriesInProgress.filter((tag) => tag.id === id);
-    return tags.length;
+    if (tagCategoriesInProgress[id] !== undefined) {
+      return tagCategoriesInProgress[id];
+    } else {
+      return 0;
+    }
   };
 
   const allTags = (id) => {
-    const tags = tagsByAllCategories.filter((tag) => tag.id === id);
-    return tags.length;
+    if (tagsByAllCategories[id] !== undefined) {
+      return tagsByAllCategories[id];
+    } else {
+      return 0;
+    }
   };
 
   const tagsFixed = (id) => {
-    const tags = tagCategoriesFixed.filter((tag) => tag.id === id);
-    return tags.length;
+    if (tagCategoriesFixed[id] !== undefined) {
+      return tagCategoriesFixed[id];
+    } else {
+      return 0;
+    }
   };
 
   const handlePress = (event, category) => {

@@ -157,7 +157,6 @@ export default function App() {
               headerTitleAlign: "center",
               headerTintColor: "#fff",
               headerLeft: () => <CustomBackArrow />,
-              headerRight: () => <CustomHomeIcon />,
             }}
           />
           <Stack.Screen

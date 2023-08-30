@@ -1,18 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, RefreshControl } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { fetchCategories, addCategory } from "../state/categorySlice";
 import { styles } from "../../assets/css/styles";
 import AllCategories from "./allCategories";
 
 const About = ({ navigation }) => {
+  const [refreshing, setRefreshing] = useState(true);
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.categories);
+
+  const onRefresh = () => {
+    const fetchCategoriesData = async () => {
+      const categories = await fetchCategories();
+      if (categories) {
+        dispatch(addCategory(categories));
+      }
+    };
+
+    fetchCategoriesData();
+  };
+
   useEffect(() => {
     const fetchCategoriesData = async () => {
       const categories = await fetchCategories();
-      dispatch(addCategory(categories));
+      if (categories) {
+        dispatch(addCategory(categories));
+      }
     };
 
     fetchCategoriesData();
