@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
 import Spinner from "react-native-loading-spinner-overlay";
 import ViewTag from "../claims/ViewTag";
 import { styles } from "../../assets/css/styles";
+import IconMarker from "../../assets/appimages/marker.png";
 
 function Explore() {
   const [location, setLocation] = useState(null);
@@ -98,6 +99,7 @@ function Explore() {
                     }}
                     key={id}
                     onPress={() => setSelectedMarker(id)}
+                    image={IconMarker}
                   >
                     {selectedMarker !== null && (
                       <ViewTag
