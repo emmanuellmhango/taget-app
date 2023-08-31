@@ -34,6 +34,7 @@ const Signup = ({ navigation }) => {
         password: values.password,
         phone: values.phone,
         dob: "--",
+        signin_by: "form",
       },
     };
     try {

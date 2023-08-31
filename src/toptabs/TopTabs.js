@@ -1,6 +1,6 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { Text, StatusBar } from "react-native"; // Import StatusBar
+import { Text, StatusBar, Dimensions } from "react-native"; // Import StatusBar
 import DashBoard from "./dashboard";
 import Explore from "./explore";
 import About from "./about";
@@ -8,6 +8,9 @@ import About from "./about";
 const Tab = createMaterialTopTabNavigator();
 
 const TopTabs = () => {
+  const windowWidth = Dimensions.get("window").width;
+  const tabWidth = windowWidth / 3;
+
   return (
     <>
       <StatusBar backgroundColor="#612cfe" hidden={false} />
@@ -18,7 +21,7 @@ const TopTabs = () => {
           headerShown: false,
           tabBarActiveTintColor: "#fff",
           tabBarInactiveTintColor: "#f5f5f5",
-          tabBarLabelStyle: { fontSize: 18 },
+          tabBarLabelStyle: { fontSize: 18, width: tabWidth },
           tabBarLabel: ({ focused, color }) => (
             <Text
               style={[
@@ -32,6 +35,7 @@ const TopTabs = () => {
           tabBarScrollEnabled: true,
           tabBarStyle: {
             backgroundColor: "#612cfe",
+            width: "100%",
             marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
           },
           tabBarIndicatorStyle: {
