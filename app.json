@@ -31,11 +31,7 @@
         "android.permission.INTERNET",
         "android.permission.RECORD_AUDIO"
       ],
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyBLWpsP07l02xLlqyi3T8PtL031udazDmU"
-        }
-      },
+     
       "package": "com.tagetapp2.tagetapp"
     },
     "web": {
