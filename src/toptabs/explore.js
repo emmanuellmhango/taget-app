@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Text, View, Image } from "react-native";
 import * as Location from "expo-location";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import Spinner from "react-native-loading-spinner-overlay";
 import ViewTag from "../claims/ViewTag";
 import { styles } from "../../assets/css/styles";
@@ -72,6 +72,7 @@ function Explore() {
           {location && (
             <MapView
               style={styles.mapStyle}
+              provider={PROVIDER_GOOGLE}
               region={{
                 latitude: location.coords.latitude,
                 longitude: location.coords.longitude,

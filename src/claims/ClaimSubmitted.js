@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, Image, TextInput } from "react-native";
 import { styles } from "../../assets/css/styles";
-import MapView, { Marker, Callout } from "react-native-maps";
+import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import CustomCallout from "./CustomCallout";
 
 const ClaimSubmitted = ({ navigation, route }) => {
@@ -19,6 +19,7 @@ const ClaimSubmitted = ({ navigation, route }) => {
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}
+            provider={PROVIDER_GOOGLE}
           >
             <Marker
               coordinate={{

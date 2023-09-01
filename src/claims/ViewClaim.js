@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Text, View, Image, TextInput } from "react-native";
 import { styles } from "../../assets/css/styles";
-import MapView, { Marker, Callout } from "react-native-maps";
+import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 import ViewTag from "./ViewTag";
 //import SVG Icons
 import Accident from "../../assets/icons/Accident.svg";
@@ -31,6 +31,7 @@ const ViewClaim = ({ route }) => {
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}
+            provider={PROVIDER_GOOGLE}
           >
             <Marker
               coordinate={{
