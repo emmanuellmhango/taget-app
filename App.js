@@ -142,6 +142,7 @@ export default function App() {
               },
               headerTitleAlign: "center",
               headerTintColor: "#fff",
+              headerLeft: null,
               headerRight: () => <CustomHomeIcon />,
             }}
           />

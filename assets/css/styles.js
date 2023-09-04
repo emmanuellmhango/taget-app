@@ -298,6 +298,7 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     alignItems: "center",
     justifyContent: "center",
+    paddingBottom: 3,
   },
   flyItem: {
     width: "95%",
@@ -697,6 +698,6 @@ export const styles = StyleSheet.create({
   },
 
   dateText: {
-    color: "#612cfe", // White font color
+    color: "#612cfe",
   },
 });

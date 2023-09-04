@@ -5,12 +5,13 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  FlatList,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
 import * as Location from "expo-location";
-import AllClaims from "../state/allclaims";
+import AllClaims from "./allclaims";
 import { styles } from "../../assets/css/styles";
 import { fetchClaims } from "../state/fetchClaims";
 import { addClaims } from "../state/addClaimSlice";
@@ -116,23 +117,6 @@ const DashBoard = ({ navigation }) => {
     );
   };
 
-  const viewOnMap = (event, claim) => {
-    event.preventDefault();
-    const {
-      category: { name: categoryName },
-      geocode,
-      images,
-      location,
-    } = claim;
-
-    navigation.navigate("ViewClaim", {
-      categoryName,
-      images,
-      location,
-      geocode,
-    });
-  };
-
   return (
     <View style={styles.dashboardWrapper}>
       <View style={styles.cameraIcon}>
@@ -150,47 +134,11 @@ const DashBoard = ({ navigation }) => {
             </Text>
           </View>
         ) : (
-          <View style={styles.modalFly}>
-            <Text style={styles.flyTitle}>Recent Tags</Text>
-            <View style={styles.flyContainer}>
-              <ScrollView>
-                {claims &&
-                  claims.map((claim, index) => (
-                    <TouchableOpacity
-                      onPress={(event) => viewOnMap(event, claim)}
-                      key={index}
-                    >
-                      <View style={styles.flyItemContainer}>
-                        <View style={styles.flyItem}>
-                          <View style={styles.flyImageContainer}>
-                            {claim.category.name === "accident" && <Accident />}
-                            {claim.category.name === "water" && <Water />}
-                            {claim.category.name === "road" && <Road />}
-                            {claim.category.name === "security" && <Security />}
-                            {claim.category.name === "safety" && <Safety />}
-                            {claim.category.name === "gas" && <Gas />}
-                            {claim.category.name === "electricity" && (
-                              <Electricity />
-                            )}
-                            {claim.category.name === "ecology" && <Ecology />}
-                            {claim.category.name === "building" && <Building />}
-                            {claim.category.name === "animals" && <Animals />}
-                          </View>
-                          <View style={styles.flyTextContainer}>
-                            <Text style={styles.flyText}>
-                              Claim_000{index + 1}
-                            </Text>
-                            <Text style={styles.flyTextClaims}>
-                              Location: {claim.geocode}
-                            </Text>
-                          </View>
-                        </View>
-                      </View>
-                    </TouchableOpacity>
-                  ))}
-              </ScrollView>
-            </View>
-          </View>
+          <FlatList
+            data={claims}
+            renderItem={({ claim }) => <AllClaims claim={claim} />}
+            keyExtractor={(claim) => claim.id}
+          />
         )}
       </View>
       <View style={styles.modal}>
