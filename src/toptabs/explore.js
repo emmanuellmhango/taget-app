@@ -1,7 +1,7 @@
+// explore.js
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Text, View, Image } from "react-native";
-import * as Location from "expo-location";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import Spinner from "react-native-loading-spinner-overlay";
 import ViewTag from "../claims/ViewTag";
@@ -9,34 +9,11 @@ import { styles } from "../../assets/css/styles";
 import IconMarker from "../../assets/appimages/marker.png";
 
 function Explore() {
-  const [location, setLocation] = useState(null);
   const [cleanClaims, setCleanClaims] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedMarker, setSelectedMarker] = useState(null);
   const { claims } = useSelector((state) => state.claims);
-
-  const getLocationAsync = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status === "granted") {
-      const locationResult = await Location.getCurrentPositionAsync({});
-      return locationResult;
-    } else {
-      alert(
-        "Permission to access location was denied. Please allow it to proceed"
-      );
-    }
-  };
-
-  useEffect(() => {
-    setLoading(true);
-    const getLocalLocation = async () => {
-      const locat = await getLocationAsync();
-      setLocation(locat);
-    };
-
-    getLocalLocation();
-    setLoading(false);
-  }, []);
+  const { location } = useSelector((state) => state.location);
 
   const cleanClaimLocation = () => {
     if (claims) {
@@ -81,9 +58,7 @@ function Explore() {
               }}
               onPress={() => setSelectedMarker(null)}
             >
-              {cleanClaims?.length < 1 ||
-              cleanClaims === null ||
-              cleanClaims === undefined ? (
+              {cleanClaims.length < 1 ? (
                 <Marker
                   coordinate={{
                     latitude: location.coords.latitude,
@@ -117,7 +92,7 @@ function Explore() {
           )}
           {!location && (
             <View style={styles.locationLoading}>
-              <Text style={styles.aboutInfoText}> map loading ... </Text>
+              <Text style={styles.aboutInfoText}> map loading... </Text>
             </View>
           )}
         </View>

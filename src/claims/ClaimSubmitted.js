@@ -1,7 +1,8 @@
+//claimsubmitted
 import React, { useState, useEffect } from "react";
 import { Text, View, Image, TextInput } from "react-native";
 import { styles } from "../../assets/css/styles";
-import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import CustomCallout from "./CustomCallout";
 
 const ClaimSubmitted = ({ navigation, route }) => {

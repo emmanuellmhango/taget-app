@@ -8,6 +8,8 @@ import {
   ImageBackground,
   Keyboard,
   TouchableWithoutFeedback,
+  ScrollView,
+  Dimensions,
 } from "react-native";
 import { Formik } from "formik";
 import axios from "axios";
@@ -67,83 +69,95 @@ const Signup = ({ navigation }) => {
           resizeMode="cover"
           style={styles.image}
         >
-          <Formik
-            initialValues={{
-              name: "",
-              email: "",
-              password: "",
-              phone: "",
+          <ScrollView
+            contentContainerStyle={{
+              width: Dimensions.get("window").width,
+              height: Dimensions.get("window").height,
             }}
-            validate={(values) => {
-              const errors = {};
-
-              if (!values.name) {
-                errors.name = "Name is required";
-              }
-              return errors;
-            }}
-            onSubmit={handleSignup}
           >
-            {(props) => (
-              <View style={styles.loginForm}>
-                <Image
-                  style={styles.SignupLogo}
-                  source={require("../../assets/appimages/logo.png")}
-                />
-                <View style={styles.socialLogin}>
-                  <Text style={styles.socialText}>Sign up with Social</Text>
-                  <TouchableOpacity style={styles.socialBtn}>
-                    <FontAwesome5 name="facebook" style={styles.facebookIcon} />
-                  </TouchableOpacity>
-                </View>
-                <Text style={styles.textLeft}>Name</Text>
-                <TextInput
-                  style={styles.input}
-                  onChangeText={props.handleChange("name")}
-                  value={props.values.name}
-                  onBlur={props.handleBlur("name")}
-                />
-                <Text style={styles.textLeft}>Email</Text>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="email-address"
-                  onChangeText={props.handleChange("email")}
-                  value={props.values.email}
-                />
-                <Text style={styles.textLeft}>Password</Text>
-                <TextInput
-                  style={styles.input}
-                  secureTextEntry={true}
-                  onChangeText={props.handleChange("password")}
-                  value={props.values.password}
-                />
-                <Text style={styles.textLeft}>Phone Number</Text>
-                <TextInput
-                  style={styles.input}
-                  keyboardType="phone-pad"
-                  onChangeText={props.handleChange("phone")}
-                  value={props.values.phone}
-                />
+            <Formik
+              initialValues={{
+                name: "",
+                email: "",
+                password: "",
+                phone: "",
+              }}
+              validate={(values) => {
+                const errors = {};
 
-                <TouchableOpacity
-                  style={styles.loginBtn}
-                  onPress={props.handleSubmit}
-                >
-                  <Text style={styles.getStartedText}>Sign Up</Text>
-                </TouchableOpacity>
+                if (!values.name) {
+                  errors.name = "Name is required";
+                }
+                return errors;
+              }}
+              onSubmit={handleSignup}
+            >
+              {(props) => (
+                <View style={styles.loginForm}>
+                  <Image
+                    style={styles.SignupLogo}
+                    source={require("../../assets/appimages/logo.png")}
+                  />
+                  <View style={styles.socialLogin}>
+                    <Text style={styles.socialText}>Sign up with Social</Text>
+                    <TouchableOpacity style={styles.socialBtn}>
+                      <FontAwesome5
+                        name="facebook"
+                        style={styles.facebookIcon}
+                      />
+                    </TouchableOpacity>
+                  </View>
 
-                <View style={styles.bottomDiv}>
+                  <Text style={styles.textLeft}>Name</Text>
+                  <TextInput
+                    style={styles.input}
+                    onChangeText={props.handleChange("name")}
+                    value={props.values.name}
+                    onBlur={props.handleBlur("name")}
+                  />
+                  <Text style={styles.textLeft}>Email</Text>
+                  <TextInput
+                    style={styles.input}
+                    keyboardType="email-address"
+                    onChangeText={props.handleChange("email")}
+                    value={props.values.email}
+                  />
+                  <Text style={styles.textLeft}>Password</Text>
+                  <TextInput
+                    style={styles.input}
+                    secureTextEntry={true}
+                    onChangeText={props.handleChange("password")}
+                    value={props.values.password}
+                  />
+                  <Text style={styles.textLeft}>Phone Number</Text>
+                  <TextInput
+                    style={styles.input}
+                    keyboardType="phone-pad"
+                    onChangeText={props.handleChange("phone")}
+                    value={props.values.phone}
+                  />
+
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Login")}
+                    style={styles.loginBtn}
+                    onPress={props.handleSubmit}
                   >
-                    <Text style={styles.signupTextFromLogin}>
-                      Already have an account? Sign in
-                    </Text>
+                    <Text style={styles.getStartedText}>Sign Up</Text>
                   </TouchableOpacity>
+
+                  <View style={styles.bottomDiv}>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Login")}
+                    >
+                      <Text style={styles.signupTextFromLogin}>
+                        Already have an account? Sign in
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                  <Text>{/* */}</Text>
                 </View>
-              </View>
-            )}
-          </Formik>
+              )}
+            </Formik>
+          </ScrollView>
           <Spinner visible={loading} textStyle={styles.spinnerTextStyle} />
         </ImageBackground>
       </View>

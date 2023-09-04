@@ -9,10 +9,12 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Spinner from "react-native-loading-spinner-overlay";
+import * as Location from "expo-location";
 import AllClaims from "../state/allclaims";
 import { styles } from "../../assets/css/styles";
 import { fetchClaims } from "../state/fetchClaims";
 import { addClaims } from "../state/addClaimSlice";
+import { addLocation } from "../state/locationSlice";
 //import SVG Icons
 import Accident from "../../assets/icons/Accident.svg";
 import Animals from "../../assets/icons/Animals.svg";
@@ -32,6 +34,29 @@ const DashBoard = ({ navigation }) => {
   const [topCategory, setTopCategory] = useState("");
   const [loading, setLoading] = useState(false);
   const { user } = useSelector((state) => state.user);
+
+  const getLocationAsync = async () => {
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status === "granted") {
+      const locationResult = await Location.getCurrentPositionAsync({});
+      return locationResult;
+    } else {
+      alert(
+        "Permission to access location was denied. Please allow it to proceed"
+      );
+    }
+  };
+
+  useEffect(() => {
+    setLoading(true);
+    const getLocalLocation = async () => {
+      const locat = await getLocationAsync();
+      dispatch(addLocation(locat));
+    };
+
+    getLocalLocation();
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -109,7 +134,7 @@ const DashBoard = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.wrapper}>
+    <View style={styles.dashboardWrapper}>
       <View style={styles.cameraIcon}>
         <View style={styles.cameraDiv}>
           <TouchableOpacity onPress={handleAddButtonPress}>

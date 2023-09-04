@@ -8,6 +8,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ImageBackground,
+  Dimensions,
+  ScrollView,
 } from "react-native";
 import { Formik } from "formik";
 import axios from "axios";
@@ -82,76 +84,84 @@ const Login = ({ navigation }) => {
           resizeMode="cover"
           style={styles.image}
         >
-          <Formik
-            initialValues={{ email: "", password: "" }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = "Email is required";
-              }
-              if (!values.password) {
-                errors.password = "Password is required";
-              }
-              return errors;
+          <ScrollView
+            contentContainerStyle={{
+              width: Dimensions.get("window").width,
+              height: Dimensions.get("window").height,
             }}
-            onSubmit={handleLogin}
           >
-            {(props) => (
-              <View style={styles.loginForm}>
-                <Image
-                  source={require("../../assets/appimages/logo.png")}
-                  style={styles.logo}
-                />
-                <View style={styles.socialLogin}>
-                  <Text style={styles.socialText}>Sign in with Social</Text>
-                  <TouchableOpacity style={styles.socialBtn}>
-                    <FontAwesome5 name="facebook" style={styles.facebookIcon} />
-                  </TouchableOpacity>
-                </View>
-                <Text style={styles.textLeft}>Email</Text>
-                <TextInput
-                  style={styles.input}
-                  onChangeText={props.handleChange("email")}
-                  value={props.values.email}
-                />
-                <Text style={styles.textLeft}>Password</Text>
-                <TextInput
-                  style={styles.input}
-                  secureTextEntry={true}
-                  onChangeText={props.handleChange("password")}
-                  value={props.values.password}
-                />
-                <View style={styles.forgotDiv}>
+            <Formik
+              initialValues={{ email: "", password: "" }}
+              validate={(values) => {
+                const errors = {};
+                if (!values.email) {
+                  errors.email = "Email is required";
+                }
+                if (!values.password) {
+                  errors.password = "Password is required";
+                }
+                return errors;
+              }}
+              onSubmit={handleLogin}
+            >
+              {(props) => (
+                <View style={styles.loginFormScroll}>
+                  <Image
+                    source={require("../../assets/appimages/logo.png")}
+                    style={styles.logo}
+                  />
+                  <View style={styles.socialLogin}>
+                    <Text style={styles.socialText}>Sign in with Social</Text>
+                    <TouchableOpacity style={styles.socialBtn}>
+                      <FontAwesome5
+                        name="facebook"
+                        style={styles.facebookIcon}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                  <Text style={styles.textLeft}>Email</Text>
+                  <TextInput
+                    style={styles.input}
+                    keyboardType="email-address"
+                    onChangeText={props.handleChange("email")}
+                    value={props.values.email}
+                  />
+                  <Text style={styles.textLeft}>Password</Text>
+                  <TextInput
+                    style={styles.input}
+                    secureTextEntry={true}
+                    onChangeText={props.handleChange("password")}
+                    value={props.values.password}
+                  />
+                  <View style={styles.forgotDiv}>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Forgot")}
+                    >
+                      <Text style={styles.loginForgotPassword}>
+                        Forgot Password ?
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate("Forgot")}
+                    style={styles.loginBtn}
+                    onPress={props.handleSubmit}
                   >
-                    <Text style={styles.loginForgotPassword}>
-                      Forgot Password ?
-                    </Text>
+                    <Text style={styles.getStartedText}>Sign in</Text>
                   </TouchableOpacity>
-                </View>
-                <TouchableOpacity
-                  style={styles.loginBtn}
-                  onPress={props.handleSubmit}
-                >
-                  <Text style={styles.getStartedText}>Sign in</Text>
-                </TouchableOpacity>
 
-                <View style={styles.bottomDiv}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate("Signup")}
-                  >
-                    <Text style={styles.signupTextFromLogin}>
-                      New Account? Sign up
-                    </Text>
-                  </TouchableOpacity>
+                  <View style={styles.bottomDiv}>
+                    <TouchableOpacity
+                      onPress={() => navigation.navigate("Signup")}
+                    >
+                      <Text style={styles.signupTextFromLogin}>
+                        New Account? Sign up
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
                 </View>
-              </View>
-            )}
-          </Formik>
-          <View style={styles.bottomSpace}>
-            <Text style={styles.bottomText}>{/* */}</Text>
-          </View>
+              )}
+            </Formik>
+          </ScrollView>
           <Spinner visible={loading} textStyle={styles.spinnerTextStyle} />
         </ImageBackground>
       </View>

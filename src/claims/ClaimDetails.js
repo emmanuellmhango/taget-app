@@ -107,6 +107,16 @@ const ClaimDetails = ({ navigation, route }) => {
     }
   };
 
+  const getDateToday = () => {
+    const date = new Date();
+
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
+
   return (
     <View style={styles.cameraWrapper}>
       <ScrollView>
@@ -115,13 +125,16 @@ const ClaimDetails = ({ navigation, route }) => {
             <Image
               source={{ uri: img1 }}
               style={styles.imgClaim1}
-              alt="Claim Image"
+              alt="Claim Image 1"
             />
             <Image
               source={{ uri: img2 }}
               style={styles.imgClaim2}
               alt="Claim Image"
             />
+            <View style={styles.claimImagesDate}>
+              <Text style={styles.dateText}>{getDateToday()}</Text>
+            </View>
           </View>
           <View style={styles.claimLocation}>
             <Text style={styles.locationText}>{geoCode}</Text>

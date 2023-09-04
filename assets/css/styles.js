@@ -65,6 +65,11 @@ export const styles = StyleSheet.create({
   loginForm: {
     justifyContent: "flex-start",
     alignItems: "center",
+    flex: 1,
+  },
+  loginFormScroll: {
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
   textLeft: {
     textAlign: "left",
@@ -156,10 +161,15 @@ export const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    flexDirection: "column",
     alignItems: "stretch",
     justifyContent: "space-between",
     backgroundColor: "#612cfe",
+  },
+  dashboardWrapper: {
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#612cfe",
+    flex: 1,
   },
   aboutWrapper: {
     flex: 1,
@@ -170,7 +180,7 @@ export const styles = StyleSheet.create({
   },
   cameraIcon: {
     alignItems: "center",
-    flexGrow: 1,
+    height: 50,
   },
   cameraIconStyling: {
     color: "#612cfe",
@@ -198,7 +208,7 @@ export const styles = StyleSheet.create({
   },
   modal: {
     width: "100%",
-    backgroundColor: "#612cfe",
+    flex: 2,
   },
   aboutModal: {
     width: "100%",
@@ -331,12 +341,12 @@ export const styles = StyleSheet.create({
     fontSize: 10,
   },
   claimsContainer: {
-    width: "99%",
+    width: "100%",
     backgroundColor: "#fff",
     borderRadius: 26,
     marginBottom: 10,
     marginTop: 10,
-    height: "73%",
+    flex: 8,
   },
   aboutContainer: {
     width: "99%",
@@ -673,5 +683,20 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     height: 50,
     marginRight: 5,
+  },
+  claimImagesDate: {
+    position: "absolute",
+    bottom: 10,
+    left: 10,
+    backgroundColor: "#fff",
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft: 12,
+    paddingRight: 12,
+    borderRadius: 15,
+  },
+
+  dateText: {
+    color: "#612cfe", // White font color
   },
 });
