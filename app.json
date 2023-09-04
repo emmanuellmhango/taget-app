@@ -30,11 +30,7 @@
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.INTERNET"
       ],
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyBLWpsP07l02xLlqyi3T8PtL031udazDmU"
-        }
-      },
+     
       "package": "com.tagetapp2.tagetapp"
     },
     "web": {
