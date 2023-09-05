@@ -16,17 +16,6 @@ import { styles } from "../../assets/css/styles";
 import { fetchClaims } from "../state/fetchClaims";
 import { addClaims } from "../state/addClaimSlice";
 import { addLocation } from "../state/locationSlice";
-//import SVG Icons
-import Accident from "../../assets/icons/Accident.svg";
-import Animals from "../../assets/icons/Animals.svg";
-import Building from "../../assets/icons/Building.svg";
-import Ecology from "../../assets/icons/Ecology.svg";
-import Electricity from "../../assets/icons/Electricity.svg";
-import Gas from "../../assets/icons/Gas.svg";
-import Road from "../../assets/icons/Road.svg";
-import Water from "../../assets/icons/Water.svg";
-import Safety from "../../assets/icons/Safety.svg";
-import Security from "../../assets/icons/Security.svg";
 
 const DashBoard = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -34,6 +23,7 @@ const DashBoard = ({ navigation }) => {
   const [weeklyClaims, setWeeklyClaims] = useState("");
   const [topCategory, setTopCategory] = useState("");
   const [loading, setLoading] = useState(false);
+  const [fetchClaimsdata, setFetchClaimsData] = useState(false);
   const { user } = useSelector((state) => state.user);
 
   const getLocationAsync = async () => {
@@ -47,6 +37,20 @@ const DashBoard = ({ navigation }) => {
       );
     }
   };
+  useEffect(() => {
+    setLoading(true);
+    setFetchClaimsData(false);
+    const fetchUserClaims = async () => {
+      const response = await fetchClaims(user.id);
+      if (response) {
+        dispatch(addClaims(response));
+        setFetchClaimsData(true);
+      }
+    };
+
+    fetchUserClaims();
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -56,19 +60,6 @@ const DashBoard = ({ navigation }) => {
     };
 
     getLocalLocation();
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    setLoading(true);
-    const fetchUserClaims = async () => {
-      const response = await fetchClaims(user.id);
-      if (response) {
-        dispatch(addClaims(response));
-      }
-    };
-
-    fetchUserClaims();
     setLoading(false);
   }, []);
 
@@ -127,17 +118,18 @@ const DashBoard = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.claimsContainer}>
-        {claims?.length < 1 || claims === null || claims === undefined ? (
+        {claims.length < 1 && (
           <View style={styles.NoContentFlyItemContainer}>
             <Text style={styles.NoClaimsFlyText}>
-              You havent made a Tag Yet
+              You haven't made a Tag Yet
             </Text>
           </View>
-        ) : (
+        )}
+        {claims.length > 0 && (
           <FlatList
             data={claims}
-            renderItem={({ claim }) => <AllClaims claim={claim} />}
-            keyExtractor={(claim) => claim.id}
+            renderItem={({ item }) => <AllClaims claim={item} />}
+            keyExtractor={(item) => item.id.toString()}
           />
         )}
       </View>

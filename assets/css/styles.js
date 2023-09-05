@@ -293,12 +293,12 @@ export const styles = StyleSheet.create({
   },
   flyItemContainer: {
     width: "100%",
-    borderColor: "#cfd1cf",
-    borderTopWidth: 1,
+    borderColor: "rgba(97, 44, 254, 0.2)",
     borderBottomWidth: 1,
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
-    paddingBottom: 3,
+    justifyContent: "space-between",
+    marginBottom: 1,
   },
   flyItem: {
     width: "95%",
@@ -431,7 +431,7 @@ export const styles = StyleSheet.create({
   infoHeaderTitle: {
     color: "#612cfe",
     fontWeight: "600",
-    fontSize: 30,
+    fontSize: 26,
     paddingLeft: 10,
   },
   aboutInfoBodyLine: {

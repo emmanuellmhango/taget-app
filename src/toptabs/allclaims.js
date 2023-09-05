@@ -35,43 +35,30 @@ const AllClaims = (props) => {
     });
   };
 
-  console.log(claim);
-
   return (
-    <View style={styles.modalFly}>
-      <Text style={styles.flyTitle}>Recent Tags</Text>
-      <View style={styles.flyContainer}>
-        <ScrollView>
-          <TouchableOpacity
-            onPress={(event) => viewOnMap(event, claim)}
-            key={claim.id}
-          >
-            <View style={styles.flyItemContainer}>
-              <View style={styles.flyItem}>
-                <View style={styles.flyImageContainer}>
-                  {claim.category.name === "accident" && <Accident />}
-                  {claim.category.name === "water" && <Water />}
-                  {claim.category.name === "road" && <Road />}
-                  {claim.category.name === "security" && <Security />}
-                  {claim.category.name === "safety" && <Safety />}
-                  {claim.category.name === "gas" && <Gas />}
-                  {claim.category.name === "electricity" && <Electricity />}
-                  {claim.category.name === "ecology" && <Ecology />}
-                  {claim.category.name === "building" && <Building />}
-                  {claim.category.name === "animals" && <Animals />}
-                </View>
-                <View style={styles.flyTextContainer}>
-                  <Text style={styles.flyText}>Claim_000{claim.id + 1}</Text>
-                  <Text style={styles.flyTextClaims}>
-                    Location: {claim.geocode}
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
+    <TouchableOpacity
+      onPress={(event) => viewOnMap(event, claim)}
+      key={claim.id}
+    >
+      <View style={styles.flyItemContainer}>
+        <View style={styles.flyImageContainer}>
+          {claim.category.name === "accident" && <Accident />}
+          {claim.category.name === "water" && <Water />}
+          {claim.category.name === "road" && <Road />}
+          {claim.category.name === "security" && <Security />}
+          {claim.category.name === "safety" && <Safety />}
+          {claim.category.name === "gas" && <Gas />}
+          {claim.category.name === "electricity" && <Electricity />}
+          {claim.category.name === "ecology" && <Ecology />}
+          {claim.category.name === "building" && <Building />}
+          {claim.category.name === "animals" && <Animals />}
+        </View>
+        <View style={styles.flyTextContainer}>
+          <Text style={styles.flyText}>Claim_000{claim.id + 1}</Text>
+          <Text style={styles.flyTextClaims}>Location: {claim.geocode}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

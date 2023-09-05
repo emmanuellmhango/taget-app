@@ -12,6 +12,6 @@ export const fetchClaims = async (id) => {
       return claims;
     }
   } catch (error) {
-    console.log("ahahaha", error);
+    console.log("error: ", error);
   }
 };

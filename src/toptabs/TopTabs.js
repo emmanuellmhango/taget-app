@@ -1,6 +1,6 @@
 import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { Text, StatusBar, Dimensions } from "react-native"; // Import StatusBar
+import { Text, StatusBar, Dimensions } from "react-native";
 import DashBoard from "./dashboard";
 import Explore from "./explore";
 import About from "./about";
@@ -21,18 +21,21 @@ const TopTabs = () => {
           headerShown: false,
           tabBarActiveTintColor: "#fff",
           tabBarInactiveTintColor: "#f5f5f5",
-          tabBarLabelStyle: { fontSize: 18, width: tabWidth },
+          tabBarLabelStyle: {
+            fontSize: 18,
+            width: tabWidth,
+          },
           tabBarLabel: ({ focused, color }) => (
             <Text
               style={[
-                focused ? { fontWeight: "bold" } : { fontWeight: "normal" },
+                focused ? { fontWeight: "400" } : { fontWeight: "normal" },
                 { color: color },
               ]}
             >
               {route.name}
             </Text>
           ),
-          tabBarScrollEnabled: true,
+          tabBarScrollEnabled: false,
           tabBarStyle: {
             backgroundColor: "#612cfe",
             width: "100%",

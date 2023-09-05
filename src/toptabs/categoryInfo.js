@@ -18,18 +18,18 @@ const CategoryInfo = ({ route }) => {
     <View style={styles.aboutWrapper}>
       <View style={styles.aboutInfoContainer}>
         <View style={styles.aboutInfoHeader}>
-          {category.name === "accident" && <Accident width={70} height={70} />}
-          {category.name === "water" && <Water width={70} height={70} />}
-          {category.name === "road" && <Road width={70} height={70} />}
-          {category.name === "security" && <Security width={70} height={70} />}
-          {category.name === "safety" && <Safety width={70} height={70} />}
-          {category.name === "gas" && <Gas width={70} height={70} />}
+          {category.name === "accident" && <Accident width={50} height={50} />}
+          {category.name === "water" && <Water width={50} height={50} />}
+          {category.name === "road" && <Road width={50} height={50} />}
+          {category.name === "security" && <Security width={50} height={50} />}
+          {category.name === "safety" && <Safety width={50} height={50} />}
+          {category.name === "gas" && <Gas width={50} height={50} />}
           {category.name === "electricity" && (
-            <Electricity width={70} height={70} />
+            <Electricity width={50} height={50} />
           )}
-          {category.name === "ecology" && <Ecology width={70} height={70} />}
-          {category.name === "building" && <Building width={70} height={70} />}
-          {category.name === "animals" && <Animals width={70} height={70} />}
+          {category.name === "ecology" && <Ecology width={50} height={50} />}
+          {category.name === "building" && <Building width={50} height={50} />}
+          {category.name === "animals" && <Animals width={50} height={50} />}
           {/* Category Name */}
           <Text style={styles.infoHeaderTitle}>
             {category.name.charAt(0).toUpperCase() +
