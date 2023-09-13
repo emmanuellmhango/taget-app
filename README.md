@@ -24,40 +24,29 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Know Your Dog] <a name="about-project"></a>
+# 📖 [TAGET APP] <a name="about-project"></a>
 
-**[Know Your Dog]** is a react web application for learning more about different breeds of dogs
+**[Know Your Dog]** is a React Native app used for tagging places that the city authorities need to resolve the incident. The incidents include gas leakage problems, road accidents, fires, water leakage, etc. 
 
 ## 🛠 Built With <a name="built-with"></a>
 
   <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
-    <li>React</li>
+    <li>React Native</li>
   </ul>
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://reactnative.dev/">React Native</a></li>
   </ul>
 </details>
 
 ### Key Features <a name="key-features"></a>
 
-- **Single Page Application**
-- **View Major Breeds of Dogs**
-- **View Breed details and their sub-breeds**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-- [Live Demo Link](https://emmanuellmhango.github.io/dog-breeds/)
+- **Get Incident Location**
+- **Capture Images of the incident**
+- **Show the tagged places on Map**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -82,30 +71,24 @@ Clone this repository to your desired folder:
 
 - Navigate to the directory where you want to clone the project.
 
-- Clone the project using by running the following command:
+- Clone the project by running the following command:
 
-`git clone https://github.com/emmanuellmhango/dog-breeds.git`
+`git clone https://github.com/emmanuellmhango/taget-app.git`
 
 ### Install
 
-Install this project with: node js, run this command `npm install` in the terminal
+ - Install this project with node js, run this command `npm install` in the terminal
+ - Install EXPO by running the following command `npm install -g expo-cli `
 
 ### Usage
 
 To run the project, execute the following command:
 
-- `npm run build`
-- `npm run start`
+- `npx expo start`
 
-### Run tests
+### Compile to Android
 
-To run tests, run the following command:
-
-- `npm run test`
-
-### Deployment
-
-You can deploy this project using: `npm run deploy`
+You can deploy this project using: `eas build -p android --profile preview`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -135,8 +118,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Add Dog Breeds]**
-- [ ] **[Add Dog Breed information]**
+- [ ] **[Add analytics]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -148,13 +130,6 @@ If you like this project feel free to leave a star ⭐️
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- ACKNOWLEDGEMENTS -->
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-> This project is based on the design by [Nelson Sakwa on Behance](https://www.behance.net/sakwadesignstudio). My gratitude goes to him for the wonderful job he has done.
-> Again, I would like to thank Microverse for motivating me to build this beautiful project
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FAQ (optional) -->
@@ -164,10 +139,6 @@ If you like this project feel free to leave a star ⭐️
 - **[How to run this project?]**
 
   - [You need to have [Node.js](https://nodejs.org/en/download/) in your local machine, and in the root of the project write `npm run start` in the terminal]
-
-- **[Is it open source?]**
-
-  - [Yes you are allowed to use this project]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
